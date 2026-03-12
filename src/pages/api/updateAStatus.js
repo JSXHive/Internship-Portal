@@ -1,5 +1,6 @@
 // pages/api/updateStatus.js
-import { pool } from "../../../lib/db"; // adjust path if needed
+// import { pool } from "../../../lib/db"; // adjust path if needed
+import { pool } from "@/lib/db";
 
 export default async function handler(req, res) {
   if (req.method !== "PUT") {

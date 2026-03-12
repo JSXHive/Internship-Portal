@@ -1,7 +1,8 @@
 import { IncomingForm } from "formidable";
 import fs from "fs";
 import path from "path";
-import { pool } from "../../../lib/db.js";
+// import { pool } from "../../../lib/db.js";
+import { pool } from "@/lib/db";
 
 export const config = {
   api: {

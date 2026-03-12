@@ -1,5 +1,6 @@
 // pages/api/reset-password.js
-import { pool } from "../../../lib/db.js";
+// import { pool } from "../../../lib/db.js";
+import { pool } from "@/lib/db";
 import bcrypt from "bcrypt";
 
 export default async function handler(req, res) {

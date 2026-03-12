@@ -1,5 +1,6 @@
 // Change from named import to default import
-import { pool } from '../../../../lib/db';
+// import { pool } from '../../../../lib/db';
+import { pool } from "@/lib/db";
 
 export default async function handler(req, res) {
   if (req.method === 'GET') {

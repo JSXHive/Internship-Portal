@@ -1,5 +1,6 @@
 // pages/api/request-reset.js
-import { pool } from "../../lib/db.js";
+// import { pool } from "../../lib/db.js";
+import { pool } from "@/lib/db";
 import crypto from "crypto";
 import sendEmail from "../../lib/sendEmail.js"; // your email function
 

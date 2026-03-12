@@ -1,5 +1,6 @@
 // pages/api/updateApplicationStatus.js
-import { pool } from "../../../lib/db";
+// import { pool } from "../../../lib/db";
+import { pool } from "@/lib/db";
 
 // Helper function to generate student ID
 function generateStudentId(sequenceNumber) {

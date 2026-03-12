@@ -1,4 +1,5 @@
-import { pool } from '../../../lib/db.js';
+// import { pool } from '../../../lib/db.js';
+import { pool } from "@/lib/db";
 import { generateOTP, storeOTP, checkRecentOTP } from '../../../lib/otpUtils.js';
 import nodemailer from 'nodemailer';
 

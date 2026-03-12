@@ -1,5 +1,6 @@
 // pages/api/student/application.js
-import { query } from '../../../../lib/db';
+// import { query } from '../../../../lib/db';
+import { pool } from "@/lib/db";
 
 export default async function handler(req, res) {
   const { userId } = req.query;

@@ -1,4 +1,5 @@
-import { pool } from '../../../lib/db';
+// import { pool } from '../../../lib/db';
+import { pool } from "@/lib/db";
 import { createReadStream, createWriteStream, mkdirSync, existsSync, unlinkSync } from 'fs';
 import { join } from 'path';
 import formidable from 'formidable';

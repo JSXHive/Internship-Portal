@@ -1,4 +1,5 @@
-import { pool } from '../../../../lib/db';
+// import { pool } from '../../../../lib/db';
+import { pool } from "@/lib/db";
 import path from 'path';
 
 export default async function handler(req, res) {

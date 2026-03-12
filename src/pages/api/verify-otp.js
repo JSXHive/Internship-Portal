@@ -1,4 +1,5 @@
-import { pool } from '../../../lib/db.js';
+// import { pool } from '../../../lib/db.js';
+import { pool } from "@/lib/db";
 import { verifyOTP } from '../../../lib/otpUtils.js';
 
 // Helper to generate a random student user_id (numeric)
