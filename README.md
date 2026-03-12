@@ -1,7 +1,18 @@
+```markdown
 # 💼 Internship Portal – InfoTech Corporation of Goa Ltd.
 
 A comprehensive **Internship Management System** built using **Next.js**, **React.js**, and **PostgreSQL**, developed for **InfoTech Corporation of Goa Limited**, Altinho, Panaji–Goa.  
 This system facilitates seamless management of internships involving **students**, **mentors**, and **administrators**, providing tools for applications, task management, attendance, and certification.
+
+---
+
+## 📋 Prerequisites
+
+Before you begin, ensure you have installed:
+- **Node.js** (v18 or higher)
+- **PostgreSQL** (v14 or higher)
+- **npm** or **yarn** package manager
+- **Git** (for version control)
 
 ---
 
@@ -15,9 +26,7 @@ This system facilitates seamless management of internships involving **students*
    cd Internship-Portal
    ```
 
-
 2. **Install dependencies**
-
    ```bash
    npm install
    # or
@@ -35,10 +44,10 @@ This system facilitates seamless management of internships involving **students*
    EMAIL_USER=your-email@example.com
    EMAIL_PASS=your-app-password
    NEXTAUTH_URL=http://localhost:3000
+   NEXTAUTH_SECRET=your-nextauth-secret-key
    ```
 
 4. **Run the development server**
-
    ```bash
    npm run dev
    ```
@@ -52,39 +61,39 @@ This system facilitates seamless management of internships involving **students*
 ```
 Internship-Portal/
 ├── backend/
-│   └── server.js                # Custom backend server logic
+│   └── server.js                
 │
 ├── lib/
-│   ├── db.js                    # Database connection (PostgreSQL)
-│   ├── multer.js                # File upload configuration
-│   ├── otpUtils.js              # OTP generation and validation
-│   └── send-email.js            # Email sending utilities
+│   ├── db.js                    
+│   ├── multer.js                
+│   ├── otpUtils.js              
+│   └── send-email.js            
 │
 ├── pages/
-│   ├── index.js                 # Landing page
-│   ├── login.js                 # Login screen
-│   ├── signup.js                # Signup page
-│   ├── download-certificate.js  # Certificate download functionality
+│   ├── index.js                 
+│   ├── login.js                 
+│   ├── signup.js                
+│   ├── download-certificate.js  
 │   │
 │   ├── admin/
-│   │   ├── dashboard.js         # Admin dashboard
-│   │   └── certificates.js      # Admin certificate management
+│   │   ├── dashboard.js         
+│   │   └── certificates.js      
 │   │
 │   ├── mentor/
-│   │   ├── dashboard.js         # Mentor dashboard
-│   │   ├── certificates.js      # Mentor certificate view
-│   │   └── profile.js           # Mentor profile management
+│   │   ├── dashboard.js         
+│   │   ├── certificates.js      
+│   │   └── profile.js           
 │   │
 │   ├── student/
-│   │   ├── dashboard.js         # Student dashboard
-│   │   ├── certificate.js       # Certificate access
-│   │   └── status.js            # Internship application status
+│   │   ├── dashboard.js         
+│   │   ├── certificate.js       
+│   │   └── status.js            
 │   │
 │   └── api/
-│       ├── login.js             # User authentication API
-│       ├── mentors.js           # Mentor data API
-│       ├── getApplications.js   # Fetch applications
-│       ├── getUserData.js       # Fetch user details
+│       ├── login.js             
+│       ├── mentors.js           
+│       ├── getApplications.js   
+│       ├── getUserData.js       
 │       ├── download-certificate.js
 │       │
 │       ├── admin/
@@ -100,21 +109,20 @@ Internship-Portal/
 │       └── student/
 │           └── certificate.js
 │
-├── public/                      # Static assets
-├── styles/                      # CSS and global styles
+├── public/                      
+├── styles/                      
 ├── package.json
 ├── next.config.js
 ├── jsconfig.json
 ├── eslint.config.mjs
 └── .env.local
 ```
+
 ---
 
 ## 🧱 Database Setup (PostgreSQL)
 
 ### 🗄️ Create Database
-
-In your PostgreSQL terminal or pgAdmin:
 
 ```sql
 CREATE DATABASE student;
@@ -122,12 +130,7 @@ CREATE DATABASE student;
 
 ### 🧩 Core Tables
 
-Below are the primary tables used in the Internship Portal database:
-
 #### `users`
-
-Stores all users (students, mentors, admins)
-
 ```sql
 CREATE TABLE public.users (
   user_id VARCHAR(50) PRIMARY KEY,
@@ -145,9 +148,6 @@ CREATE TABLE public.users (
 ```
 
 #### `applications`
-
-Tracks student internship applications
-
 ```sql
 CREATE TABLE public.applications (
   application_id SERIAL PRIMARY KEY,
@@ -172,9 +172,6 @@ CREATE TABLE public.applications (
 ```
 
 #### `student_profiles`
-
-Detailed student information
-
 ```sql
 CREATE TABLE public.student_profiles (
   profile_id SERIAL PRIMARY KEY,
@@ -199,9 +196,6 @@ CREATE TABLE public.student_profiles (
 ```
 
 #### `attendance`
-
-Tracks daily attendance
-
 ```sql
 CREATE TABLE public.attendance (
   id SERIAL PRIMARY KEY,
@@ -224,9 +218,6 @@ CREATE TABLE public.attendance (
 ```
 
 #### `certificates`
-
-Stores issued internship certificates
-
 ```sql
 CREATE TABLE public.certificates (
   id SERIAL PRIMARY KEY,
@@ -248,10 +239,7 @@ CREATE TABLE public.certificates (
 );
 ```
 
-#### `student_tasks`, `task_submissions`, and `task_queries`
-
-Manage mentor-assigned tasks, submissions, and queries
-
+#### `student_tasks`
 ```sql
 CREATE TABLE public.student_tasks (
   task_id SERIAL PRIMARY KEY,
@@ -266,7 +254,10 @@ CREATE TABLE public.student_tasks (
   created_at TIMESTAMP DEFAULT NOW(),
   updated_at TIMESTAMP DEFAULT NOW()
 );
+```
 
+#### `task_submissions`
+```sql
 CREATE TABLE public.task_submissions (
   submission_id SERIAL PRIMARY KEY,
   task_id INTEGER REFERENCES student_tasks(task_id) ON DELETE CASCADE,
@@ -282,7 +273,10 @@ CREATE TABLE public.task_submissions (
   created_at TIMESTAMP DEFAULT NOW(),
   updated_at TIMESTAMP DEFAULT NOW()
 );
+```
 
+#### `task_queries`
+```sql
 CREATE TABLE public.task_queries (
   query_id SERIAL PRIMARY KEY,
   task_id INTEGER REFERENCES student_tasks(task_id),
@@ -298,9 +292,6 @@ CREATE TABLE public.task_queries (
 ```
 
 #### `mentor_profiles`
-
-Stores mentor information
-
 ```sql
 CREATE TABLE public.mentor_profiles (
   id SERIAL PRIMARY KEY,
@@ -323,95 +314,187 @@ CREATE TABLE public.mentor_profiles (
 ## 🧩 Features Summary
 
 ### 🎓 Student Features
-
-* Apply for internships
-* Upload assignments and deliverables
-* View mentor feedback
-* Download completion certificates
-* Mark and check attendance
-* Raise task-related queries
+- Apply for internships
+- Upload assignments and deliverables
+- View mentor feedback
+- Download completion certificates
+- Mark and check attendance
+- Raise task-related queries
+- Track internship progress
 
 ### 🧑‍🏫 Mentor Features
-
-* Assign tasks to students
-* Review and grade submissions
-* Provide feedback and resolve queries
-* Manage student progress
+- Assign tasks to students
+- Review and grade submissions
+- Provide feedback and resolve queries
+- Manage student progress
+- Track attendance of assigned students
 
 ### 🧑‍💼 Admin Features
-
-* Approve/reject internship applications
-* Assign students to mentors
-* Issue certificates
-* Track attendance and performance
+- Approve/reject internship applications
+- Assign students to mentors
+- Issue certificates
+- Track attendance and performance
+- Manage correction requests
+- Generate reports
 
 ---
 
-## 🛠️ Technologies Used
+## 📚 API Endpoints
 
-* **Next.js** – Full-stack React framework
-* **React.js** – Frontend UI
-* **PostgreSQL** – Relational database
-* **Node.js** – Backend runtime
-* **Multer & Nodemailer** – File uploads and notifications
-* **JWT** – Secure authentication
+### Authentication
+- `POST /api/login` - User login
+- `POST /api/signup` - New user registration
+
+### Student
+- `GET /api/student/dashboard` - Get student dashboard data
+- `POST /api/student/attendance` - Mark attendance
+- `GET /api/student/tasks` - View assigned tasks
+- `POST /api/student/submissions` - Submit task
+- `GET /api/student/certificate` - View/download certificate
+
+### Mentor
+- `GET /api/mentor/dashboard-data` - Mentor dashboard stats
+- `POST /api/mentor/tasks` - Create new task
+- `GET /api/mentor/students` - View assigned students
+- `PUT /api/mentor/submissions/:id` - Review submission
+
+### Admin
+- `GET /api/admin/applications` - View all applications
+- `PUT /api/admin/applications/:id` - Update application status
+- `POST /api/admin/certificates` - Issue certificate
+
+---
+
+## 🔒 Security Features
+
+- **JWT Authentication** - Secure token-based authentication
+- **Password Hashing** - bcrypt for password encryption
+- **Input Validation** - All user inputs are sanitized
+- **SQL Injection Protection** - Parameterized queries
+- **File Upload Restrictions** - Limited file types and sizes
+- **Role-Based Access Control** - Different permissions per user type
+
+---
+
+## ⚡ Performance Optimizations
+
+- **Server-Side Rendering** - Fast initial page loads
+- **API Route Optimization** - Efficient data fetching
+- **Database Indexing** - Optimized queries
+- **Image Optimization** - Next.js Image component
+- **Lazy Loading** - Code splitting for better performance
+
+---
+
+## 🧪 Testing
+
+### Test Credentials
+
+| Role    | Email              | Password    |
+|---------|-------------------|-------------|
+| Admin   | admin@itg.com     | Admin@123   |
+| Mentor  | mentor@itg.com    | Mentor@123  |
+| Student | student@itg.com   | Student@123 |
 
 ---
 
 ## 🌱 Sample Seed Data
 
-For quick testing or setup:
-
 ```sql
 -- Admin
 INSERT INTO users (user_id, user_role, name, email, password)
-VALUES ('admin_001', 'admin', 'ITG Admin', 'admin@itg.com', 'Admin@123');
+VALUES ('admin_001', 'admin', 'ITG Admin', 'admin@itg.com', 'hashed_password_here');
 
 -- Mentor
 INSERT INTO users (user_id, user_role, name, email, password)
-VALUES ('mentor_001', 'mentor', 'John Mentor', 'mentor@itg.com', 'Mentor@123');
+VALUES ('mentor_001', 'mentor', 'John Mentor', 'mentor@itg.com', 'hashed_password_here');
 
 -- Student
 INSERT INTO users (user_id, user_role, name, email, password)
-VALUES ('student_001', 'student', 'Jane Student', 'student@itg.com', 'Student@123');
+VALUES ('student_001', 'student', 'Jane Student', 'student@itg.com', 'hashed_password_here');
 ```
 
 ---
 
-## ☁️ Deployment
+## 🔍 Troubleshooting
 
-You can deploy easily via **Vercel** or any Node-compatible hosting provider.
+**Database Connection Error**
+- Verify PostgreSQL is running: `sudo service postgresql status`
+- Check DATABASE_URL in .env.local
+- Ensure database 'student' exists
 
-```bash
-vercel deploy
-```
+**Email Not Sending**
+- Enable "Less secure app access" or use App Password
+- Check EMAIL_USER and EMAIL_PASS in .env.local
+- Verify port 587 is open
 
-Make sure to set all environment variables under
-**Project Settings → Environment Variables** before deployment.
+**File Upload Issues**
+- Check `uploads/` directory permissions
+- Verify multer configuration in `lib/multer.js`
 
 ---
 
-## 🏢 Developed For
+## 🚢 Deployment
 
-**InfoTech Corporation of Goa Limited**
-*Altinho, Panaji – Goa, India*
+### Deploy to Vercel
+
+1. **Push to GitHub**
+   ```bash
+   git add .
+   git commit -m "Ready for deployment"
+   git push origin main
+   ```
+
+2. **Deploy on Vercel**
+   ```bash
+   npm install -g vercel
+   vercel deploy
+   ```
+
+3. **Set Environment Variables** in Vercel dashboard
 
 ---
 
 ## 🧠 Future Enhancements
 
-* Internship analytics and dashboards
-* QR-based certificate verification
-* Automated reminders and notifications
-* AI-based progress evaluation
+- Internship Analytics Dashboard
+- QR-based Certificate Verification
+- Automated Reminders and Notifications
+- AI-based Progress Evaluation
+- Mobile App (React Native)
+- Video Conferencing Integration
+
+---
+
+## 🛠️ Technologies Used
+
+- **Next.js 14** – Full-stack React framework
+- **React.js 18** – Frontend UI library
+- **PostgreSQL 14** – Relational database
+- **Node.js 18** – Backend runtime
+- **Multer** – File upload handling
+- **Nodemailer** – Email notifications
+- **JWT** – Secure authentication
+- **Bcrypt** – Password hashing
+- **Tailwind CSS** – Styling
+
+---
+
+## 📞 Support
+
+For technical support or queries:
+- **Email**: support@itg.goa.gov.in
+- **Phone**: +91-832-XXX-XXXX
+- **Address**: InfoTech Corporation of Goa Limited, Altinho, Panaji–Goa, India
 
 ---
 
 ## 📜 License
 
 This project is developed exclusively for **InfoTech Corporation of Goa Ltd.**
-All rights reserved © 2025.
+All rights reserved © 2026 InfoTech Corporation of Goa Limited.
 
+---
 
-#   I n t e r n s h i p - P o r t a l  
- 
+**Built with ❤️ in Goa for the future of tech education**
+```
