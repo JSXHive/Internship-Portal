@@ -1836,7 +1836,7 @@ export default function MentorDetails() {
                       <Box>
                         <Text fontWeight="bold" color="blue.700">Set Clear Goals</Text>
                         <Text fontSize="sm" color="blue.600">
-                          Define what you want to achieve with your mentor's guidance
+                          Define what you want to achieve with your mentor&apos;s guidance
                         </Text>
                       </Box>
                     </HStack>
