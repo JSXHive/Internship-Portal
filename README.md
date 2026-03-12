@@ -1,5 +1,4 @@
-```markdown
-# 💼 Internship Portal – InfoTech Corporation of Goa Ltd.
+💼 Internship Portal – InfoTech Corporation of Goa Ltd.
 
 A comprehensive **Internship Management System** built using **Next.js**, **React.js**, and **PostgreSQL**, developed for **InfoTech Corporation of Goa Limited**, Altinho, Panaji–Goa.  
 This system facilitates seamless management of internships involving **students**, **mentors**, and **administrators**, providing tools for applications, task management, attendance, and certification.
@@ -497,4 +496,3 @@ All rights reserved © 2026 InfoTech Corporation of Goa Limited.
 ---
 
 **Built with ❤️ in Goa for the future of tech education**
-```
