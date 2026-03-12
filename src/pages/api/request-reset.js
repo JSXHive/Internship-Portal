@@ -2,7 +2,8 @@
 // import { pool } from "../../lib/db.js";
 import { pool } from "@/lib/db";
 import crypto from "crypto";
-import sendEmail from "../../lib/sendEmail.js"; // your email function
+// import sendEmail from "../../lib/sendEmail.js"; // your email function
+import sendEmail from '../../lib/send-email';
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {

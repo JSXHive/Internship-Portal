@@ -32,34 +32,7 @@ import {
   AlertDescription,
   Tooltip,
 } from "@chakra-ui/react";
-import {
-  FaUsers,
-  FaClipboardCheck,
-  FaTasks,
-  FaCertificate,
-  FaSignOutAlt,
-  FaChartLine,
-  FaCalendarAlt,
-  FaSync,
-  FaCheckCircle,
-  FaClock,
-  FaChalkboardTeacher,
-  FaArrowRight,
-  FaRocket,
-  FaAward,
-  FaTrophy,
-  FaRegSmileWink,
-  FaCommentDots,
-  FaUpload,
-  FaExclamationTriangle,
-  FaUser,
-  FaCalendarCheck,
-  FaIdCard,
-  FaCopy,
-  FaUserCheck,
-  FaCheckSquare,
-  FaShieldCheck,
-} from "react-icons/fa";
+import { FaArrowRight, FaAward, FaCalendarAlt, FaCalendarCheck, FaCertificate, FaChalkboardTeacher, FaChartLine, FaCheckCircle, FaCheckSquare, FaClipboardCheck, FaClock, FaCommentDots, FaCopy, FaExclamationTriangle, FaIdCard, FaRegSmileWink, FaRocket, FaShieldAlt, FaSignOutAlt, FaSync, FaTasks, FaTrophy, FaUpload, FaUser, FaUserCheck, FaUsers } from 'react-icons/fa';
 import { useRouter } from "next/router";
 
 const fadeIn = keyframes`
@@ -363,7 +336,7 @@ export default function MentorDashboard() {
     }
   }, [loading, students, studentUserIds, studentIds, tasks, mentorTasks, tasksPendingReview, deliverables, mentorDeliverables, deliverablesPendingReview, certificates, mentorCertificates, certificatesPendingVerification, certificatesCorrectionRequested, approvedCertificates, attendance, mentorAttendance, getCertificateStatusMessage]);
 
-  // UPDATED Stats data with corrected certificate status message
+  // UPDATED Stats data with corrected certificate status message and fixed icon
   const statsData = [
     {
       label: "Students Allocated",
@@ -399,7 +372,7 @@ export default function MentorDashboard() {
       label: "Pending Certificate Verification",
       value: certificatesPendingVerification,
       helpText: "Certificates awaiting your verification",
-      icon: FaShieldCheck,
+      icon: FaShieldAlt, // Changed from FaShieldCheck to FaShieldAlt
       color: "purple",
       trend: getCertificateStatusMessage, // UPDATED: Uses the dynamic status message
       gradient: "linear(to-br, purple.400, purple.600)",
@@ -712,7 +685,7 @@ export default function MentorDashboard() {
           </CardBody>
         </Card>
 
-        {/* UPDATED Statistics Grid with corrected certificate status */}
+        {/* UPDATED Statistics Grid with corrected certificate status and fixed icon */}
         <SimpleGrid columns={{ base: 1, md: 2, lg: 4 }} spacing={5} mb={6}>
           {statsData.map((stat, index) => (
             <Card 

@@ -21,24 +21,7 @@ import {
   ListIcon
 } from "@chakra-ui/react";
 import { ArrowForwardIcon } from "@chakra-ui/icons";
-import {
-  FaHistory,
-  FaUsers,
-  FaTarget,
-  FaEye,
-  FaCheckCircle,
-  FaMapMarkerAlt,
-  FaPhone,
-  FaEnvelope,
-  FaGlobe,
-  FaAward,
-  FaFax,
-  FaHandshake,
-  FaLightbulb,
-  FaShieldAlt,
-  FaUserTie,
-  FaRocket
-} from "react-icons/fa";
+import { FaAward, FaCheckCircle, FaEnvelope, FaEye, FaFax, FaGlobe, FaHandshake, FaHistory, FaLightbulb, FaMapMarkerAlt, FaPhone, FaRocket, FaShieldAlt, FaBullseye, FaUserTie, FaUsers } from 'react-icons/fa';
 import { motion } from "framer-motion";
 import Navbar from "../components/Navbar";
 import Footer from "../components/Footer";
@@ -395,7 +378,7 @@ export default function About() {
                   whileHover={{ y: -5 }}
                 >
                   <PurposeCard
-                    icon={FaTarget}
+                    icon={FaBullseye}
                     title="Mission"
                     description="To provide innovative, secure, and efficient IT solutions that transform governance, enhance public service delivery, and empower the citizens of Goa."
                     color="blue"
