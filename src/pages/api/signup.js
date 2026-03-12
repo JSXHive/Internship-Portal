@@ -1,6 +1,6 @@
 // import { pool } from '../../../lib/db.js';
 import { pool } from "@/lib/db";
-import { verifyOTP } from '../../../lib/otpUtils.js';
+import { verifyOTP } from '../../lib/otpUtils.js';
 
 export default async function handler(req, res) {
   if (req.method !== "POST") {
